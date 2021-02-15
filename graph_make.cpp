@@ -63,15 +63,19 @@ void ReadRatings(Graph& G1, Graph& G2, Graph& G3) //O(nlog(r))
                         {
                             for (int j = i + 1; j < currentIds.size(); ++j)
                             {
+                                //O(NR^2) is stuck......Goal is to elimate any Log(r).
                                 //Graph 3 is if they have 2 with a 7+ rating
                                 //Graph 2 is if they have 1 with a 7+ rating
                                 //Graph 1 is if they have rated the same movie
                                 //cout << currentIds[i].customer_id << " && " << currentIds[j].customer_id << endl;
                                 G1.AddEdge(currentIds[i].customer_id, currentIds[j].customer_id);
-                                if (G2.IsEdge(currentIds[i].customer_id, currentIds[j].customer_id) && ((currentIds[i].rating >= 7) &&
-                                    (currentIds[j].rating >= 7)))
+                                if ((currentIds[i].rating >= 7) &&
+                                    (currentIds[j].rating >= 7))
                                 {
-                                    G3.AddEdge(currentIds[i].customer_id, currentIds[j].customer_id);
+                                    if (G2.IsEdge(currentIds[i].customer_id, currentIds[j].customer_id))
+                                    {
+                                        G3.AddEdge(currentIds[i].customer_id, currentIds[j].customer_id);
+                                    }
                                 }
                                 else if ((currentIds[i].rating >= 7) &&
                                     (currentIds[j].rating >= 7))
@@ -108,9 +112,6 @@ void ReadRatings(Graph& G1, Graph& G2, Graph& G3) //O(nlog(r))
 
 
                 }
-                if (lineCount == 5000) { break; }
-                //cout << lineCount << endl;
-                lineCount += 1;
             }
 
             F1.close();

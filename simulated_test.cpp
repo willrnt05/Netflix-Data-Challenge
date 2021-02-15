@@ -33,7 +33,7 @@ void testGraph(Graph& G, int s)
 
     cout << "Components Test" << endl;
 
-    list<list<int>> test1 = Components(G);
+    list<list<int>> test1 = connected_components(G);
 
     cout << "There are " << test1.size() << " Components \n\n";
 
@@ -52,7 +52,7 @@ void testGraph(Graph& G, int s)
 
     time(&time1);
 
-    map<int, list<int>> D = DijkstrasAlgorithm(G, s);
+    map<int, list<int>> D = shortest_paths(G, s);
 
     cout << "Dijkstra's Test" << endl;
 

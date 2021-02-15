@@ -2,7 +2,7 @@
 
 
 //O(V + ELog(v))
-list<int> FindCycleSource(Graph& G, int s)
+list<int> one_cycle(Graph& G, int s)
 {
 	int v = s;
 	set<int> visited;
@@ -69,7 +69,7 @@ list<int> FindCycle(Graph& G)
 	list<int> cycle;
 	for (auto it = G.allNodes.begin(); it != G.allNodes.end(); ++it)
 	{
-		cycle = FindCycleSource(G, *it);
+		cycle = one_cycle(G, *it);
 		if (!cycle.empty())
 			return cycle;
 	}
@@ -78,7 +78,7 @@ list<int> FindCycle(Graph& G)
 
 
 
-list<list<int>> Components(Graph& G) //O(V + Elog(V)).  Elog(E) because of insert and erase calls.
+list<list<int>> connected_components(Graph& G) //O(V + Elog(V)).  Elog(E) because of insert and erase calls.
 {
 	set<int> visited;
 	set<int> notVisited = G.allNodes;
@@ -248,7 +248,7 @@ map<int, list<int>> DijkstraDecode(int u, map<int, int>& d, map<int, int>& p)
 }
 
 //O(E + V^2)
-map<int, list<int>> DijkstrasAlgorithm(Graph& G, int s)
+map<int, list<int>> shortest_paths(Graph& G, int s)
 {
 	set<int> vertices;
 	map<int, int> dist;
