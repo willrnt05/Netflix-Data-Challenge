@@ -22,6 +22,8 @@ using namespace std;
 int main()
 {
     
+    Graph* obj = new Graph;
+    
     MasterTest();
    unordered_map<int, Movie> TitleKey = ReadTitles("movie_titles.csv");
 
@@ -94,7 +96,7 @@ int main()
     
     
     //Checking if malloc displays memory used
-    Object* obj = new Object;
+//     Object* obj = new Object;
     //Lets try to find who has rated the same movie...
     return 0;
 }
