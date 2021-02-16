@@ -13,11 +13,11 @@
 
 using namespace std;
 
-void* operator new(size_t size) {
-    std::cout << "System allocates " << size << " bytes\n";
+// void* operator new(size_t size) {
+//     std::cout << "System allocates " << size << " bytes\n";
 
-    return malloc(size);
-}
+//     return malloc(size);
+// }
 
 int main()
 {
